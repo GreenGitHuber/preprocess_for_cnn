@@ -2,9 +2,7 @@
 import jieba
 import nltk
 import re
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+
 #上面两句在python3已经取消了
 #import importlib
 #importlib.reload(sys)
@@ -22,9 +20,9 @@ def main():
     line = raw.readline()
     str = ''
     while line:
-        string = re.sub("[\！\？\*\~\)\/\(\-\;\:P\“\”\[\]\%]".decode("utf8"), "".decode("utf8"), line)
-        string = re.sub("[\=\=\、\：\:\！\？\【 \】 \% \。\，\“\” \～ … \# \?\!\.\,\:\《\》]".decode("utf8"), "".decode("utf8"), string)
-        string = re.sub('[\w+\d]', "".decode("utf8"), string)
+        string = re.sub("[\！\？\*\~\)\/\(\-\;\:P\“\”\[\]\%]", "", line)
+        string = re.sub("[\=\=\、\：\:\！\？\【 \】 \% \。\，\“\” \～ … \# \?\!\.\,\:\《\》]", "", string)
+        string = re.sub('[\w+\d]', "", string)
         str += string
         line = raw.readline()
     raw.close()
@@ -33,7 +31,7 @@ def main():
     #for word in seg_list:
      #   if word not in stopwords:
     str=" ".join(seg_list)
-    f=open("zhaospam_af_jieba.txt",'wb')
+    f=open("../corpus/zhaospam_af_jieba.txt",'wb')
     f.write(str)
     f.close()
 
