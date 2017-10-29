@@ -15,14 +15,14 @@ def stopwordslist(filepath):
 #增加了自定义词典的分词系统
 def main():
     USAGE = "usage:    python preprocess.py [file name] -k [top k]"
-    raw = open(r"zhaospam.txt")
+    raw = open(r"../corpus/zhaospam.txt")
     #载入外部字典
     line = raw.readline()
     str = ''
     while line:
         string = re.sub("[\！\？\*\~\)\/\(\-\;\:P\“\”\[\]\%]", "", line)
-        string = re.sub("[\=\=\、\：\:\！\？\【 \】 \% \。\，\“\” \～ … \# \?\!\.\,\:\《\》]", "", string)
-        string = re.sub('[\w+\d]', "", string)
+        string = re.sub("[\=\=\、\：\,\+\-\:\！\？\【\◆ \】 \% \。\，\“\” \～ … \# \?\!\.\,\:\《\》]", "", string)
+        string = re.sub('[a-z\d]', "", string)
         str += string
         line = raw.readline()
     raw.close()
@@ -31,7 +31,7 @@ def main():
     #for word in seg_list:
      #   if word not in stopwords:
     str=" ".join(seg_list)
-    f=open("../corpus/zhaospam_af_jieba.txt",'wb')
+    f=open("../corpus/zhaospam_af_jieba.txt",'w')
     f.write(str)
     f.close()
 
