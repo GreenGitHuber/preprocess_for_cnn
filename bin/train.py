@@ -5,4 +5,5 @@ from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 
 model = Word2Vec.load('../model/wiki.zh.text.model')
-print (model.wv['◆'].shape)
+#print (model.wv['◆'].shape)
+print (type(model.wv['我']))

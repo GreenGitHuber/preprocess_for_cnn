@@ -2,10 +2,6 @@
 import jieba
 import nltk
 import re
-
-#上面两句在python3已经取消了
-#import importlib
-#importlib.reload(sys)
 import jieba.analyse
 #创建停用词
 def stopwordslist(filepath):
@@ -22,7 +18,7 @@ def main():
     while line:
         string = re.sub("[\！\？\*\~\)\/\(\-\;\:P\“\”\[\]\%]", "", line)
         string = re.sub("[\=\=\、\：\,\+\-\:\！\？\【\◆ \】 \% \。\，\“\” \～ … \# \?\!\.\,\:\《\》]", "", string)
-        string = re.sub('[a-z\d]', "", string)
+        string = re.sub('[a-zA-Z\d]', "", string)
         str += string
         line = raw.readline()
     raw.close()
